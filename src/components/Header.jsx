@@ -36,6 +36,11 @@ function Header() {
             </NavLink>
           </NavItem>
           <NavItem>
+            <NavLink tag={Link} to="/map">
+              Map Chickens [ BETA ]
+            </NavLink>
+          </NavItem>
+          <NavItem>
             <NavLink tag={Link} to="/submit">
               Submit Chicken
             </NavLink>
