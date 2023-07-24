@@ -1,11 +1,12 @@
 // Importing required modules and components
-import _ from "lodash";
+import _, { size } from "lodash";
 import { useEffect, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Alert, Button, Container, Row, Carousel, CarouselItem, CarouselIndicators, CarouselControl, CarouselCaption } from "reactstrap";
 import Header from "../components/Header";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { downdootChicken, getAllChickens, updootChicken } from "../utils/api";
+import "../index.css";
 
 // Define the main functional component RateChickens
 function RateChickens() {
@@ -79,11 +80,8 @@ function RateChickens() {
       onExited={() => setAnimating(false)}
       key={c.imgurl}
     >
-      <img src={c.imgurl} />
-      <CarouselCaption
-        captionText={c.description}
-        captionHeader={c.name}
-      />
+      <img src={c.imgurl} style={{width: "100%", height: "65vh"}}/>
+      
     </CarouselItem>
   ));
 
@@ -140,8 +138,8 @@ function RateChickens() {
                 </small>
               </h2>
               <hr />
-              <h6>Description</h6>
-              <p>{chicken.description}</p>
+              <h4>Description</h4>
+              <p style={{fontSize: "2rem"}}>{chicken.description}</p>
             </div>
             <div className="d-flex justify-content-between px-2 py-4">
               {/* Render buttons to downdoot and updoot the current chicken */}
@@ -152,7 +150,7 @@ function RateChickens() {
                 className="shadow-sm"
                 onClick={handleDowndoot}
               >
-                🚫 Cool Ranch 🥶
+                🚫 Condemn and FRY!
               </Button>
               <Button
                 outline
@@ -161,7 +159,7 @@ function RateChickens() {
                 className="shadow-sm"
                 onClick={handleUpdoot}
               >
-                ❤️ Spicy Buffalo 🥵
+                ❤️ Sympathize
               </Button>
             </div>
           </Row>
