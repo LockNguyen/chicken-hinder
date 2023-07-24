@@ -76,8 +76,8 @@ function SubmitChicken() {
                 }
               />
             </FormGroup>
-            <Button color="primary" size="lg" onClick={submitForm}>
-              Submit 🐔
+            <Button color="primary" size="s" onClick={submitForm}>
+              To fry or not to fry?
             </Button>
           </Form>
         </>
