@@ -88,7 +88,7 @@ function ViewChickens() {
                   <td
                     className={
                       "fw-bold " +
-                      (c.score > 14
+                      (c.score > 25
                         ? "text-warning"
                         : c.score > 5
                         ? "text-primary"
