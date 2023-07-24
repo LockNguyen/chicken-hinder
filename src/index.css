@@ -1,0 +1,10 @@
+.chikn-img {
+    height: 500px;
+    width: 500px;
+}
+
+.chikn-img img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
