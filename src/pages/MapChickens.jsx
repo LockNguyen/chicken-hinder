@@ -46,37 +46,33 @@ function MapChickens() {
   
     useEffect(getNewChicken, []);
     
-    function handleUpdoot() {
-        setErrorMsg(null);
-        setLoading(true);
-        updootChicken(chicken.id)
-          .then(() => setIndex(index + 1))
-          .catch((e) => setErrorMsg(e))
-          .finally(() => setLoading(false));
+    function Pin() {
+        return (
+            <>
+                <img src="src\assets\pin.png" alt="pin image" className="MY-pin" />
+                <div className="MY-pin--chicken">
+                    <img src={chicken.imgurl} alt="chicken image" />
+                </div>
+            </>
+        )
     }
 
-    function handleDowndoot() {
-    setErrorMsg(null);
-    setLoading(true);
-    downdootChicken(chicken.id)
-        .then(() => setIndex(index + 1))
-        .catch((e) => setErrorMsg(e))
-        .finally(() => setLoading(false));
-    }
-    
     return (
-    <div>
-        <Header />
-        {loading ? <LoadingSpinner /> : null}
-        {errorMsg ? <Alert color="danger">{errorMsg}</Alert> : null}
-        {!loading && !errorMsg && index <= chickens.length - 1 ? (
-        <div className="MY-container">
-            <img src="src\assets\nc-map.png" alt="north carolina map" className="MY-map" />
+        <div>
+            <Header />
+            {loading ? <LoadingSpinner /> : null}
+            {errorMsg ? <Alert color="danger">{errorMsg}</Alert> : null}
+            {!loading && !errorMsg && index <= chickens.length - 1 ? (
+                <>
+                    <div className="MY-container">
+                        <img src="src\assets\nc-map.png" alt="north carolina map" className="MY-map" />
+                    </div>
+                    <Pin />
+                </>    
+            ) : (
+            "No more chickens to rate."
+            )}
         </div>
-        ) : (
-        "No more chickens to rate."
-        )}
-    </div>
     );
 }
 
