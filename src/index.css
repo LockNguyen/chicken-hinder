@@ -10,9 +10,37 @@
 }
 
 
+
 body {
     background-color: black;
-    color: rgb(28, 28, 240);
+    color: white;
     font-weight: 100px;
     text-shadow: -0.75px 0 rgb(5, 3, 105), 0 0.75px rgb(5, 3, 105), 0.75px 0 rgb(5, 3, 105), 0 -0.75px rgb(5, 3, 105);
+}
+
+.MY-container {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.MY-map {
+    object-fit: contain;
+    width: 100%;
+}
+
+.MY-pin {
+    width: 10vw;
+}
+
+.MY-pin--chicken {
+    background-color: white;
+    border-radius: 50%;
+    width: 5vw;
+
+    overflow: hidden;
+}
+
+.MY-pin--chicken img {
+    width: 100%;
 }
