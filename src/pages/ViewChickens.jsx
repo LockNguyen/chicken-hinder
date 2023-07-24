@@ -36,9 +36,21 @@ function ViewChickens() {
   return (
     <div>
       <Header />
-      <h2 style ={{color: 'blue'}} className="ms-2 mt-5">
+      <hr></hr>
+      <h2 className="text-center text-primary">
+        <b>CHICKEN LEADERBOARD</b>
+      </h2>
+      <h5 className="text-center text-primary">
+        All Chickens Below a Total Score of 5 Will Be FRIED!
+      </h5>
+      <hr></hr>
+      <h2 className="ms-2 mt-5 text-primary">
         All Chickens{" "}
-        <Button size="sm" style = {{color: 'blue'}} onClick={() => navigate("/submit")}>
+        <Button
+          size="sm"
+          style={{ color: "primary" }}
+          onClick={() => navigate("/submit")}
+        >
           + Add New
         </Button>
       </h2>
@@ -56,7 +68,7 @@ function ViewChickens() {
                 <th>👎</th>
                 <th>👍</th>
                 <th>Total Score</th>
-                <th style ={{color: 'red'}}>Danger Zone</th>
+                <th style={{ color: "red" }}>Danger Zone</th>
               </tr>
             </thead>
             <tbody>
@@ -75,7 +87,8 @@ function ViewChickens() {
                   </td>
                   <td
                     className={
-                      "fw-bold " + (c.score > 6 ? "text-primary" : "text-danger")
+                      "fw-bold " +
+                      (c.score > 6 ? "text-primary" : "text-danger")
                     }
                   >
                     {c.name}
@@ -88,13 +101,15 @@ function ViewChickens() {
                       "fw-bold " + (c.score > 0 ? "text-danger" : "text-muted")
                     }
                   >
-                    {c.score} {c.score > 0 ? "🔥" : "❄️"}
+                    {c.score} {c.score > 5 ? "🔥" : "❄️"}
                   </td>
                   <td>
                     <Button
-                      style = {{color: 'blue'}}
+                      style={{ color: "primary" }}
                       size="sm"
-                      onClick={() => handleDelete(c.id)}
+                      onClick={() => {
+                        if (c.score <= 5)
+                          handleDelete(c.id)}}
                     >
                       🍗 Fry
                     </Button>
