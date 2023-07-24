@@ -8,10 +8,15 @@
     max-width: 100%;
     object-fit: contain;
 }
+<<<<<<< HEAD
 
 body {
     background-color: black;
     color: rgb(28, 28, 240);
     font-weight: 100px;
     text-shadow: -0.75px 0 rgb(5, 3, 105), 0 0.75px rgb(5, 3, 105), 0.75px 0 rgb(5, 3, 105), 0 -0.75px rgb(5, 3, 105);
+=======
+body {
+    background-color: black;
+>>>>>>> 6540032fc7513f8b3d7993cdb7a64f98e061b78a
 }

@@ -36,9 +36,9 @@ function ViewChickens() {
   return (
     <div>
       <Header />
-      <h2 className="ms-2 mt-5">
+      <h2 style ={{color: 'blue'}} className="ms-2 mt-5">
         All Chickens{" "}
-        <Button size="sm" color="danger" onClick={() => navigate("/submit")}>
+        <Button size="sm" style = {{color: 'blue'}} onClick={() => navigate("/submit")}>
           + Add New
         </Button>
       </h2>
@@ -47,7 +47,7 @@ function ViewChickens() {
       ) : (
         <>
           {errorMsg ? <Alert color="danger">{errorMsg}</Alert> : null}
-          <Table hover className="mt-5">
+          <Table dark hover className="mt-5">
             <thead>
               <tr>
                 <th></th>
@@ -56,7 +56,7 @@ function ViewChickens() {
                 <th>👎</th>
                 <th>👍</th>
                 <th>Total Score</th>
-                <th>Fry Chicken 🍗</th>
+                <th style ={{color: 'red'}}>Danger Zone</th>
               </tr>
             </thead>
             <tbody>
@@ -75,7 +75,7 @@ function ViewChickens() {
                   </td>
                   <td
                     className={
-                      "fw-bold " + (c.score > 0 ? "text-danger" : "text-muted")
+                      "fw-bold " + (c.score > 6 ? "text-primary" : "text-danger")
                     }
                   >
                     {c.name}
@@ -92,11 +92,11 @@ function ViewChickens() {
                   </td>
                   <td>
                     <Button
-                      color="danger"
+                      style = {{color: 'blue'}}
                       size="sm"
                       onClick={() => handleDelete(c.id)}
                     >
-                      🚫 Delete
+                      🍗 Fry
                     </Button>
                   </td>
                 </tr>
