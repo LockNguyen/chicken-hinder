@@ -9,9 +9,9 @@
     object-fit: contain;
 }
 
-
 body {
-    background-color: black;
-    color: rgb(28, 28, 240);
-    font-weight: 100px;
-    text-shadow: -0.75px 0 rgb(5, 3, 105), 0 0.75px rgb(5, 3, 105), 0.75px 0 rgb(5, 3, 105), 0 -0.75px rgb(5, 3, 105);
+    background-color: rgb(0, 0, 0);
+    color: rgb(92, 92, 92);
+
+    text-shadow: -1px 0 rgb(74.1, 74.1, 74.1), 0 1px rgb(74.1, 74.1, 74.1), 1px 0 rgb(74.1, 74.1, 74.1), 0 -1px rgb(74.1, 74.1, 74.1);
+}

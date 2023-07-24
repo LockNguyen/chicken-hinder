@@ -75,9 +75,16 @@ function SubmitChicken() {
                   setForm({ ...form, description: e.target.value })
                 }
               />
+              
+<div>
+  <Label>When is this Chicken gonna die?</Label>
+  <Input
+    type="date"
+  />
+</div>
             </FormGroup>
-            <Button color="primary" size="s" onClick={submitForm}>
-              To fry or not to fry?
+            <Button color="primary" size="lg" onClick={submitForm}>
+              To fry or not to fry
             </Button>
           </Form>
         </>
