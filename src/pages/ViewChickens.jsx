@@ -65,15 +65,15 @@ function ViewChickens() {
                 <th></th>
                 <th>Name</th>
                 <th>Location</th>
-                <th>👎</th>
                 <th>👍</th>
+                <th>👎</th>
                 <th>Total Score</th>
                 <th style={{ color: "red" }}>Danger Zone</th>
               </tr>
             </thead>
             <tbody>
-              {_.map(chickens, (c) => (
-                <tr key={c.id}>
+              {_.map(chickens, (c, i) => (
+            <tr key={c.id}>
                   <td>
                     <img
                       src={c.imgurl}
@@ -88,7 +88,11 @@ function ViewChickens() {
                   <td
                     className={
                       "fw-bold " +
-                      (c.score > 6 ? "text-primary" : "text-danger")
+                      (c.score > 14
+                        ? "text-warning"
+                        : c.score > 5
+                        ? "text-primary"
+                        : "text-danger")
                     }
                   >
                     {c.name}
@@ -108,8 +112,8 @@ function ViewChickens() {
                       style={{ color: "primary" }}
                       size="sm"
                       onClick={() => {
-                        if (c.score <= 5)
-                          handleDelete(c.id)}}
+                        if (c.score <= 5) handleDelete(c.id);
+                      }}
                     >
                       🍗 Fry
                     </Button>
