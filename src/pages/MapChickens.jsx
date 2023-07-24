@@ -1,7 +1,7 @@
 import _ from "lodash";
 import { useEffect, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { Alert, Button, Container, Row } from "reactstrap";
+import { Alert, Button, CardImg, Container, Row } from "reactstrap";
 import Header from "../components/Header";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { downdootChicken, getAllChickens, updootChicken } from "../utils/api";
@@ -25,8 +25,23 @@ function MapChickens() {
 
     console.log(chicken);
 
-    function getChickenCoordinate() {
+    function getChickenCoordinate(chicken) {
+        const loc = _.toLower(chicken.location);
 
+        // Greensboro
+        // Winston-Salem
+        // Raleigh
+        switch (loc) {
+            case 'greensboro':
+                return [0, 1];
+            case 'winston-salem':
+                return [0, 1];
+            case 'raleigh':
+                return [0, 1];
+        }
+        
+        // else, return 0-90% X, 0-90% Y
+        return [Math.floor(Math.random()*90), Math.floor(Math.random()*90)]
     }
   
     useEffect(getNewChicken, []);
@@ -55,47 +70,9 @@ function MapChickens() {
         {loading ? <LoadingSpinner /> : null}
         {errorMsg ? <Alert color="danger">{errorMsg}</Alert> : null}
         {!loading && !errorMsg && index <= chickens.length - 1 ? (
-        <Container>
-            <Row>
-            <div className="p-2 bg-light d-flex align-items-center justify-content-center">
-                <div className="chikn-img d-flex align-items-center justify-content-center">
-                <img src={chicken.imgurl} />
-                </div>
-            </div>
-            <div style={{ height: "220px" }}>
-                <h2 className="mt-3 d-flex align-items-baseline">
-                {chicken.name}
-                <small className="text-sm text-muted ms-3 d-flex align-items-center">
-                    <FaMapMarkerAlt style={{ width: 20 }} className="me-2" />
-                    {chicken.location}
-                </small>
-                </h2>
-                <hr />
-                <h6>Description</h6>
-                <p>{chicken.description}</p>
-            </div>
-            <div className="d-flex justify-content-between px-2 py-4">
-                <Button
-                outline
-                color="primary"
-                size="lg"
-                className="shadow-sm"
-                onClick={handleDowndoot}
-                >
-                🚫 Cool Ranch 🥶
-                </Button>
-                <Button
-                outline
-                color="danger"
-                size="lg"
-                className="shadow-sm"
-                onClick={handleUpdoot}
-                >
-                ❤️ Spicy Buffalo 🥵
-                </Button>
-            </div>
-            </Row>
-        </Container>
+        <div className="MY-container">
+            <img src="src\assets\nc-map.png" alt="north carolina map" className="MY-map" />
+        </div>
         ) : (
         "No more chickens to rate."
         )}
