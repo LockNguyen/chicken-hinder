@@ -15,7 +15,7 @@ function Header() {
   const [collapsed, setCollapsed] = useState(true);
 
   return (
-    <Navbar color="faded" light>
+    <Navbar style = {{color: 'blue'}}light>
       <NavbarBrand href="/" className="me-auto">
         <img style={{ height: "3rem" }} src={logo} />
       </NavbarBrand>
