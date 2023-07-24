@@ -46,7 +46,7 @@ function SubmitChicken() {
           {errorMsg ? <Alert color="danger">{errorMsg}</Alert> : null}
           <Form className="p-3">
             <FormGroup>
-              <Label>Name: </Label>
+              <Label> Subject: </Label>
               <Input
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -60,14 +60,14 @@ function SubmitChicken() {
               />
             </FormGroup>
             <FormGroup>
-              <Label>Image URL: </Label>
+              <Label> Profile Photo: </Label>
               <Input
                 value={form.imgUrl}
                 onChange={(e) => setForm({ ...form, imgUrl: e.target.value })}
               />
             </FormGroup>
             <FormGroup>
-              <Label>Description: </Label>
+              <Label> Tell us your Story: </Label>
               <Input
                 type="textarea"
                 value={form.description}
