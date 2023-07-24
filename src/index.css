@@ -12,8 +12,7 @@
 
 body {
     background-color: black;
-    color: rgb(97, 161, 180);
+    color: rgb(28, 28, 240);
     font-weight: 100px;
     text-shadow: -0.75px 0 rgb(5, 3, 105), 0 0.75px rgb(5, 3, 105), 0.75px 0 rgb(5, 3, 105), 0 -0.75px rgb(5, 3, 105);
 }
-
