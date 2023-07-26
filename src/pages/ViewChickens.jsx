@@ -116,7 +116,7 @@ function ViewChickens() {
                         : "text-primary")
                     } // This is unecessary now but is a good example of a nested ternary operator.
                   >
-                    {addMedal(i)}{c.name}
+                    {i < 3 && addMedal(i)}{c.name}
                   </td>
                   <td>{c.location}</td>
                   <td>{c.updoots}</td>
