@@ -33,6 +33,24 @@ function ViewChickens() {
       .finally(() => setLoading(false));
   }
 
+  function addMedal(i) {
+    let icon = "";
+
+    switch(i) {
+      case 0:
+        icon = "🥇 ";
+        break;
+      case 1:
+        icon = "🥈 ";
+        break;
+      case 2:
+        icon = "🥉 ";
+        break;
+    }
+
+    return icon;
+  }
+
   return (
     <div>
       <Header />
@@ -88,14 +106,17 @@ function ViewChickens() {
                   <td
                     className={
                       "fw-bold " +
-                      (c.score > 25
-                        ? "text-warning"
-                        : c.score > 10
-                        ? "text-primary"
-                        : "text-danger")
+                      // (c.score > 25
+                      //   ? "text-warning"
+                      //   : c.score > 10
+                      //   ? "text-primary"
+                      //   : "text-danger")
+                      (i < 3 ? "text-warning" 
+                        : c.score <= 10 ? "text-danger" 
+                        : "text-primary")
                     } // This is unecessary now but is a good example of a nested ternary operator.
                   >
-                    {c.name}
+                    {addMedal(i)}{c.name}
                   </td>
                   <td>{c.location}</td>
                   <td>{c.updoots}</td>
@@ -105,7 +126,7 @@ function ViewChickens() {
                       "fw-bold " + (c.score > 0 ? "text-danger" : "text-muted")
                     }
                   >
-                    {c.score} {c.score > 5 ? "🔥" : "❄️"}
+                    {c.score} {c.score > 10 ? "🔥" : "❄️"}
                   </td>
                   <td>
                     <Button
