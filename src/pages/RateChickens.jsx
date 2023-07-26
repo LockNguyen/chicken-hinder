@@ -2,7 +2,16 @@
 import _, { size } from "lodash";
 import { useEffect, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { Alert, Button, Container, Row, Carousel, CarouselItem, CarouselIndicators, CarouselControl } from "reactstrap";
+import {
+  Alert,
+  Button,
+  Container,
+  Row,
+  Carousel,
+  CarouselItem,
+  CarouselIndicators,
+  CarouselControl,
+} from "reactstrap";
 import Header from "../components/Header";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { downdootChicken, getAllChickens, updootChicken } from "../utils/api";
@@ -18,7 +27,7 @@ function RateChickens() {
   const [animating, setAnimating] = useState(false);
 
   // Get the current chicken object being rated based on the current index
-  const chicken = chickens[activeIndex];
+  const chicken = chickens[activeIndex]; //for caroussel
 
   // Function to fetch a new set of shuffled chickens from the API
   function getNewChicken() {
@@ -51,7 +60,7 @@ function RateChickens() {
     setLoading(true); // Set loading to true to show loading spinner
     // Downdoot the current chicken by its ID and then move to the next one
     downdootChicken(chicken.id)
-      .then(() => setIndex(index + 1)) // Move to the next chicken in the array
+      .then(() => setIndex(index - 1)) // Move to the next chicken in the array
       .catch((e) => setErrorMsg(e)) // If an error occurs, set the error message state
       .finally(() => setLoading(false)); // Set loading to false after the API call finishes
   }
@@ -79,15 +88,9 @@ function RateChickens() {
       onExited={() => setAnimating(false)}
       key={c.imgurl}
     >
-      <img src={c.imgurl} style={{width: "100%", height: "50vh"}}/>
-      
+      <img src={c.imgurl} style={{ width: "100%", height: "50vh" }} />
     </CarouselItem>
   ));
-
-
-
-
-  
 
   return (
     <div>
@@ -99,7 +102,7 @@ function RateChickens() {
       {/* If loading is false, errorMsg is null, and there are chickens left to rate */}
       {!loading && !errorMsg && index <= chickens.length - 1 ? (
         // Render the container with information about the current chicken being rated
-        <Container style={{width: "500px"}}>
+        <Container style={{ width: "500px" }}>
           <Row>
             {/* Display the image of the current chicken
             <div className="p-2 bg-light d-flex align-items-center justify-content-center">
@@ -138,7 +141,7 @@ function RateChickens() {
               </h2>
               <hr />
               <h4>Description</h4>
-              <p style={{fontSize: "1.25rem"}}>{chicken.description}</p>
+              <p style={{ fontSize: "1.25rem" }}>{chicken.description}</p>
             </div>
             <div className="d-flex justify-content-between px-2 py-4">
               {/* Render buttons to downdoot and updoot the current chicken */}
@@ -147,7 +150,10 @@ function RateChickens() {
                 color="primary"
                 size="lg"
                 className="shadow-sm"
-                onClick={handleDowndoot}
+                onClick={() => {
+                  handleDowndoot();
+                  setActiveIndex(activeIndex + 1);
+                }}
               >
                 🚫 Condemn and FRY!
               </Button>
@@ -156,7 +162,10 @@ function RateChickens() {
                 color="danger"
                 size="lg"
                 className="shadow-sm"
-                onClick={handleUpdoot}
+                onClick={() => {
+                  handleUpdoot();
+                  setActiveIndex(activeIndex + 1);
+                }}
               >
                 ❤️ Sympathize
               </Button>
