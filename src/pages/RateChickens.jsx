@@ -1,8 +1,8 @@
 // Importing required modules and components
-import _ from "lodash";
+import _, { size } from "lodash";
 import { useEffect, useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { Alert, Button, Container, Row, Carousel, CarouselItem, CarouselIndicators, CarouselControl, CarouselCaption } from "reactstrap";
+import { Alert, Button, Container, Row, Carousel, CarouselItem, CarouselIndicators, CarouselControl } from "reactstrap";
 import Header from "../components/Header";
 import LoadingSpinner from "../components/LoadingSpinner";
 import { downdootChicken, getAllChickens, updootChicken } from "../utils/api";
@@ -79,11 +79,8 @@ function RateChickens() {
       onExited={() => setAnimating(false)}
       key={c.imgurl}
     >
-      <img src={c.imgurl} />
-      <CarouselCaption
-        captionText={c.description}
-        captionHeader={c.name}
-      />
+      <img src={c.imgurl} style={{width: "100%", height: "50vh"}}/>
+      
     </CarouselItem>
   ));
 
@@ -102,7 +99,7 @@ function RateChickens() {
       {/* If loading is false, errorMsg is null, and there are chickens left to rate */}
       {!loading && !errorMsg && index <= chickens.length - 1 ? (
         // Render the container with information about the current chicken being rated
-        <Container>
+        <Container style={{width: "500px"}}>
           <Row>
             {/* Display the image of the current chicken
             <div className="p-2 bg-light d-flex align-items-center justify-content-center">
@@ -140,8 +137,8 @@ function RateChickens() {
                 </small>
               </h2>
               <hr />
-              <h6>Description</h6>
-              <p>{chicken.description}</p>
+              <h4>Description</h4>
+              <p style={{fontSize: "1.25rem"}}>{chicken.description}</p>
             </div>
             <div className="d-flex justify-content-between px-2 py-4">
               {/* Render buttons to downdoot and updoot the current chicken */}
@@ -152,7 +149,7 @@ function RateChickens() {
                 className="shadow-sm"
                 onClick={handleDowndoot}
               >
-                🚫 Cool Ranch 🥶
+                🚫 Condemn and FRY!
               </Button>
               <Button
                 outline
@@ -161,7 +158,7 @@ function RateChickens() {
                 className="shadow-sm"
                 onClick={handleUpdoot}
               >
-                ❤️ Spicy Buffalo 🥵
+                ❤️ Sympathize
               </Button>
             </div>
           </Row>

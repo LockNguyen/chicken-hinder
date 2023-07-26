@@ -1,22 +1,21 @@
 .chikn-img {
-    height: 500px;
-    width: 500px;
+    height: 100%;
+    width: 100%;
 }
 
 .chikn-img img {
     max-height: 100%;
     max-width: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 
 body {
     background-color: black;
-    color: white;
+    color: rgb(87, 87, 87);
     font-weight: 100px;
-    text-shadow: -0.75px 0 rgb(5, 3, 105), 0 0.75px rgb(5, 3, 105), 0.75px 0 rgb(5, 3, 105), 0 -0.75px rgb(5, 3, 105);
-}
 
+    text-shadow: -1px 0 rgb(74.1, 74.1, 74.1), 0 1px rgb(74.1, 74.1, 74.1), 1px 0 rgb(74.1, 74.1, 74.1), 0 -1px rgb(74.1, 74.1, 74.1);
 .MY-container {
     height: 100vh;
     width: 100vw;

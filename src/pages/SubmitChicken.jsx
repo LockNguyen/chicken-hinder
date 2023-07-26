@@ -17,6 +17,7 @@ const emptyForm = {
   location: "",
   imgUrl: "",
   description: "",
+  date: "",
 };
 
 function SubmitChicken() {
@@ -75,9 +76,20 @@ function SubmitChicken() {
                   setForm({ ...form, description: e.target.value })
                 }
               />
+              
+<div>
+  <Label>When is this Chicken gonna die?</Label>
+  <Input
+    type="date"
+    value={form.description}
+                onChange={(e) =>
+                  setForm({ ...form, date: e.target.value })
+                }
+  />
+</div>
             </FormGroup>
-            <Button color="primary" size="s" onClick={submitForm}>
-              To fry or not to fry?
+            <Button color="primary" size="lg" onClick={submitForm}>
+              To fry or not to fry
             </Button>
           </Form>
         </>
