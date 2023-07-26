@@ -41,7 +41,7 @@ function ViewChickens() {
         <b>CHICKEN LEADERBOARD</b>
       </h2>
       <h5 className="text-center text-primary">
-        All Chickens Below a Total Score of 5 Will Be FRIED!
+        All Chickens Below a Total Score of 10 Will Be FRIED!
       </h5>
       <hr></hr>
       <h2 className="ms-2 mt-5 text-primary">
@@ -90,10 +90,10 @@ function ViewChickens() {
                       "fw-bold " +
                       (c.score > 25
                         ? "text-warning"
-                        : c.score > 5
+                        : c.score > 10
                         ? "text-primary"
                         : "text-danger")
-                    }
+                    } // This is unecessary now but is a good example of a nested ternary operator.
                   >
                     {c.name}
                   </td>
@@ -112,7 +112,7 @@ function ViewChickens() {
                       style={{ color: "primary" }}
                       size="sm"
                       onClick={() => {
-                        if (c.score <= 5) handleDelete(c.id);
+                        if (c.score <= 9) handleDelete(c.id);
                       }}
                     >
                       🍗 Fry

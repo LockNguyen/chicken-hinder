@@ -18,6 +18,10 @@ body {
     text-shadow: -1px 0 rgb(74.1, 74.1, 74.1), 0 1px rgb(74.1, 74.1, 74.1), 1px 0 rgb(74.1, 74.1, 74.1), 0 -1px rgb(74.1, 74.1, 74.1);
 }
 
+.overall-height {
+    height: calc(100vh - (100vw * 58 / 683));
+}
+
 .MY-container {
     width: 100vw;
     height: calc(100vw / 662.172 * 485.688);

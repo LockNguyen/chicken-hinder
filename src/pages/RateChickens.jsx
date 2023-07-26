@@ -67,7 +67,7 @@ function RateChickens() {
 
   const next = () => {
     if (animating) return;
-    const nextIndex = activeIndex === chickens.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex + 1;
     setActiveIndex(nextIndex);
   };
 
@@ -81,6 +81,8 @@ function RateChickens() {
     if (animating) return;
     setActiveIndex(newIndex);
   };
+
+
 
   const slides = chickens.map((c) => (
     <CarouselItem
@@ -100,9 +102,9 @@ function RateChickens() {
       {/* If errorMsg state is not null, show an error message using the Alert component */}
       {errorMsg ? <Alert color="danger">{errorMsg}</Alert> : null}
       {/* If loading is false, errorMsg is null, and there are chickens left to rate */}
-      {!loading && !errorMsg && index <= chickens.length - 1 ? (
+      {!loading && !errorMsg && activeIndex <= chickens.length - 1 ? (
         // Render the container with information about the current chicken being rated
-        <Container style={{ width: "500px" }}>
+        <Container className="overall-height" style={{ width: "500px"}}>
           <Row>
             {/* Display the image of the current chicken
             <div className="p-2 bg-light d-flex align-items-center justify-content-center">
@@ -152,7 +154,7 @@ function RateChickens() {
                 className="shadow-sm"
                 onClick={() => {
                   handleDowndoot();
-                  setActiveIndex(activeIndex + 1);
+                  next();
                 }}
               >
                 🚫 Condemn and FRY!
@@ -164,7 +166,7 @@ function RateChickens() {
                 className="shadow-sm"
                 onClick={() => {
                   handleUpdoot();
-                  setActiveIndex(activeIndex + 1);
+                  next();
                 }}
               >
                 ❤️ Sympathize
