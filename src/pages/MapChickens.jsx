@@ -33,27 +33,32 @@ function MapChickens() {
         // Raleigh
         switch (loc) {
             case 'greensboro':
-                return [0, 1];
+                return [15, 45];
+                break;
             case 'winston-salem':
-                return [0, 1];
+                return [15, 41];
+                break;
             case 'raleigh':
-                return [0, 1];
+                return [20, 57];
+                break;
         }
         
-        // else, return 0-90% X, 0-90% Y
-        return [Math.floor(Math.random()*90), Math.floor(Math.random()*90)]
+        // else, return 0-60% X, 0-90% Y
+        return [Math.random()*60, Math.random()*90]
     }
   
     useEffect(getNewChicken, []);
     
-    function Pin() {
+    function Pin({ chicken }) {
+        const coords = getChickenCoordinate(chicken);
+
         return (
-            <>
+            <div className="MY-pin-container" style={{top: (coords[0]) + "vh", left: coords[1] + "vw"}}>
                 <img src="src\assets\pin.png" alt="pin image" className="MY-pin" />
                 <div className="MY-pin--chicken">
                     <img src={chicken.imgurl} alt="chicken image" />
                 </div>
-            </>
+            </div>
         )
     }
 
@@ -65,9 +70,10 @@ function MapChickens() {
             {!loading && !errorMsg && index <= chickens.length - 1 ? (
                 <>
                     <div className="MY-container">
+                        {_.map(chickens, c => <Pin chicken={c}/>)}
                         <img src="src\assets\nc-map.png" alt="north carolina map" className="MY-map" />
                     </div>
-                    <Pin />
+                    
                 </>    
             ) : (
             "No more chickens to rate."
